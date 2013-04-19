@@ -1,28 +1,64 @@
-﻿<html>
-  <head>
-    <script>
-function evaluate()
-{
-    var input = window.inputBox.value;
-    window.inputBox.value = "";
-    window.display.value += input+"\n";
+<html>
+	<head>
+	<title>Hit &amp; Blow</title>
+	<script type="text/javascript">
 
-}
- 
-    </script>
-  </head>
+		function main(){
+			var input = window.inputBox.value;
+			window.inputBox.value ="";
+			var ans="1234";/*仮の答え*/
+			/*var ans=generateAns();*/
+			window.outputBox.value += input+"\n"+arrangeOutput(input,ans)+"\n";	
+		}
 
+		function arrangeOutput(input,ans){
+			/*ヒット、ブロー、おめでとう、エラーのメッセージを整える
+			*/			
 
-  <body>
+			return hitCount(input,ans)+"Hit!!"+blowCount(input,ans)+"Blow!!";
+		}
 
-<input type="text" id="inputBox"/>
-   <input type="button" value="入力" onClick="evaluate()"/>
-<div>
-<textarea id="display"></textarea>
-</div>
+		function hitCount(input,ans){
+			var hitcnt=0;
+			for(i=0;i<4;i++){
+				if(input.charAt(i)==ans.charAt(i)){
+				hitcnt++;
+				}
+			}
+			return hitcnt;
+		}
 
+		function blowCount(input,ans){
+			var blowcnt=0;
+			for (i=0;i<4;i++){
+				for(j=0;j<4;j++){
+					if(i!=j){
+						if(input.charAt(i)==ans.charAt(j)){
+						blowcnt++;
+						}
+					}
+				}
+			}
+			return blowcnt;
+		}
 
- </body>
+		function errorCheck(){
 
+		}
 
+		function generateAns(){
+
+		}
+
+	</script>
+	</head>
+	<body>
+
+		<input type="text" id="inputBox">
+		<input type="button" value="Try!" onclick="main()">
+
+		<div>
+			<textarea id="outputBox"></textarea>
+		</div>
+	</body>
 </html>
