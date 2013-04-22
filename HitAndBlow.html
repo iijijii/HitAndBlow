@@ -14,8 +14,13 @@
 		function arrangeOutput(input,ans){
 			/*ヒット、ブロー、おめでとう、エラーのメッセージを整える
 			*/			
-
-			return hitCount(input,ans)+"Hit!!"+blowCount(input,ans)+"Blow!!";
+			if(hasErr(input)){
+					return "Please input 4 characters";
+				
+			}else{
+				return hitCount(input,ans)+"Hit!!"+blowCount(input,ans)+"Blow!!";
+			}
+			
 		}
 
 		function hitCount(input,ans){
@@ -41,10 +46,39 @@
 			}
 			return blowcnt;
 		}
-
-		function errorCheck(){
-
+/*-----------------エラー関連--------------------------*/		
+		function hasErr(input){
+			if(input.length!=4){
+				return true;
+			}/*
+			else if(isDigit(input)==false){
+				return true;
+			}
+			else if(concludeSameNum){
+				return true;
+			}*/
 		}
+
+		/*function classifyErr(input){
+			if(input.length!=4){
+				return err="err1";
+			}
+			else if(sDigit(input)==false){
+				return err="err2";
+			}
+			else {
+				return err="err3";
+			}
+		}
+
+		function isDigit(input){
+			
+		}
+
+		function concludeSameNum(input){
+
+		}*/
+/*----------------------------------------------*/
 
 		function generateAns(){
 
