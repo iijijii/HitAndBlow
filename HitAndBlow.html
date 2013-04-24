@@ -13,8 +13,14 @@
 		function arrangeOutput(input,ans){
 			/*ヒット、ブロー、おめでとう、エラーのメッセージを整える
 			*/			
-			if(hasErr(input)){
-					return "Please input 4 characters";
+			if(hasErr(input)==true){
+					/*if(classifyErr(input)=="err1"){
+						return "Please input 4 digits";
+					}else if(classifyErr(input)=="err2"){
+						return "Please input disits";
+					}else{*/
+						return "Please input distinct 4 digits";
+					//}
 
 			}else{
 				return hitCount(input,ans)+"Hit!!"+blowCount(input,ans)+"Blow!!";
@@ -49,34 +55,42 @@
 		function hasErr(input){
 			if(input.length!=4){
 				return true;
-			}/*
+			}
 			else if(isDigit(input)==false){
 				return true;
+			//}
+			/*else if(concludeSameNum){
+				return true;*/
+			}else{
+				return false;
 			}
-			else if(concludeSameNum){
-				return true;
-			}*/
 		}
 
-		/*function classifyErr(input){
+		function classifyErr(input){
 			if(input.length!=4){
-				return err="err1";
+				err="err1";
 			}
-			else if(sDigit(input)==false){
-				return err="err2";
+			else if(isDigit(input)==false){
+				err="err2";
 			}
 			else {
-				return err="err3";
+				err="err3";
 			}
+			return err;
 		}
 
 		function isDigit(input){
-			
+			var num=input.match(/[^0-9]{3}/);//数字じゃない
+			if(num==null){
+				return true;
+			}else{
+				return false;
+			}
 		}
 
 		function concludeSameNum(input){
 
-		}*/
+		}
 /*----------------------------------------------*/
 		function generateAns(){
 			var ans="";
