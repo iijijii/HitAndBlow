@@ -93,12 +93,14 @@
 		}
 /*----------------------------------------------*/
 		function generateAns(){
+			var arrayAns=new Array(4);
+			var array1=["0","1","2","3","4","5","6","7","8","9"];
 			var ans="";
-			var array1=new Array("0","1","2","3","4","5","6","7","8","9");
 			for(i=0;i<4;i++){
 				var rndNum=Math.floor(Math.random()*(10-i));
-				array1.splice(rndNum,1);
-				ans+=rndNum;
+				arrayAns[i]=array1[rndNum];
+				ans+=arrayAns[i];
+				array1.splice(rndNum,1);//rndNum番目の要素を取り除く	
 			}
 			return ans;
 		}
