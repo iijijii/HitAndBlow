@@ -6,7 +6,7 @@
 		function main(){
 			var input = window.inputBox.value;
 			window.inputBox.value ="";
-			var ans=generateAns();
+			var ans=generateAnswer();
 			window.outputBox.value += input+"\n"+arrangeOutput(input,ans)+"\n";	
 		}
 
@@ -92,17 +92,15 @@
 
 		}
 /*----------------------------------------------*/
-		function generateAns(){
-			var arrayAns=new Array(4);
-			var array1=["0","1","2","3","4","5","6","7","8","9"];
-			var ans="";
+		function generateAnswer(){
+			var availableNumbers=["0","1","2","3","4","5","6","7","8","9"];
+			var answer="";
 			for(i=0;i<4;i++){
-				var rndNum=Math.floor(Math.random()*(10-i));
-				arrayAns[i]=array1[rndNum];
-				ans+=arrayAns[i];
-				array1.splice(rndNum,1);//rndNum番目の要素を取り除く	
+				var j=Math.floor(Math.random()*availableNumbers.length);
+				answer+=availableNumbers[j];
+				availableNumbers.splice(j,1);//j番目の要素を取り除く	
 			}
-			return ans;
+			return answer;
 		}
 
 	</script>
